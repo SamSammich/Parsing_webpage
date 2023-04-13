@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "parsing-webpage"
+version = "0.1.0"
+description = ""
+authors = ["Sam(RYZEN-PC) <abdusamadov55@gamil.com>"]
+readme = "README.md"
+packages = [{include = "parsing_webpage"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+requests = "^2.28.2"
+beautifulsoup4 = "^4.12.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
