@@ -1,4 +1,5 @@
-from src.head_hunter import HeadHunterAPI, JSONSaver
+from src.classes_for_hh_and_spjob import HeadHunterAPI
+from src.head_hunter import JSONSaver
 from src.utils import sort_by_salary_min, sort_by_salary_max
 
 # keyword = input("Could you kindly specify the type of job you are interested in? \n -->")
