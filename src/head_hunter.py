@@ -4,9 +4,34 @@ from abc import ABC, abstractmethod
 import requests
 from pprint import pprint
 
+from src.absract_class import Engine
 
 
+class HeadHunterAPI(Engine):
+    def get_request(self, keyword, page):
+        """Getting request from the webpage """
+        headers = {
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36",
+            "Accept-Language": "ru,en-US;q=0.9,en;q=0.8"
+        }
 
+        params = {
+            "text": keyword,
+            "page": page,
+            "per_page": 100
+        }
+        return requests.get('https://api.hh.ru/vacancies', headers=headers, params=params).json()['items']
+
+    def get_vacancies(self, keyword, page):
+        """Saving Information in response and returning it"""
+
+        response = []
+        for pag in range(int(page)):
+            print(f"Parsing page {pag}", end=": ")
+            values = self.get_request(keyword, page)
+            print(f"Found {len(values)} vacancies")
+            response.extend(values)
+        return response
 
 
 class Vacancy:
@@ -55,10 +80,13 @@ class JSONSaver:
         return self.__filename
 
     def add_vacancies(self, data):
+        """Saving vacancies in JSON file """
+
         with open(self.__filename, 'w', encoding='utf-8') as file:
             json.dump(data, file, indent=4, ensure_ascii=False)
 
     def select(self):
+        """Extracting the relevant information from the JSON file."""
         with open(self.__filename, 'r', encoding='utf-8') as select_file:
             select_data = json.load(select_file)
 
