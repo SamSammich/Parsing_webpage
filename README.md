@@ -1,2 +1,6 @@
-# Parsing_webpage
-This repository will contain code for web page parsing and information extraction, which will be stored in JSON format.
+###Курсовой проект по ООП “Парсер вакансий”
+##Проект модуля 4 парсер по API с площадок вакансий HeadHunter и SuperJob и сохранение его в файл JSON.
+#Реализованы операции:
+Вывод всего списка вакансий
+Вывод вакансий по возрастание зарплаты
+Вывод вакансий по убиванию зарплаты
